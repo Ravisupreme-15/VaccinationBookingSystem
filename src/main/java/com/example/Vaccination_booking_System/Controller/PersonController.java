@@ -1,6 +1,8 @@
 package com.example.Vaccination_booking_System.Controller;
 
 
+import com.example.Vaccination_booking_System.DTO.RequestDto.AddPersonReqDto;
+import com.example.Vaccination_booking_System.DTO.ResponseDto.AddPersonResDto;
 import com.example.Vaccination_booking_System.Model.Person;
 import com.example.Vaccination_booking_System.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +24,35 @@ public class PersonController {
 
     // add person
 
+//    @PostMapping("/add_person")
+//
+//    public ResponseEntity addPerson(@RequestBody Person person){
+//
+//
+//        try {
+//            Person person1 = personService.addPerson(person);
+//           return  new ResponseEntity(person1, HttpStatus.ACCEPTED);
+//        }
+//        catch (Exception e){
+//
+//            return new ResponseEntity(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
+//        }
+//
+//        }
+
     @PostMapping("/add_person")
 
-    public ResponseEntity addPerson(@RequestBody Person person){
+    public ResponseEntity addPerson(@RequestBody AddPersonReqDto addPersonReqDto){
 
 
         try {
-            Person person1 = personService.addPerson(person);
-           return  new ResponseEntity(person1, HttpStatus.ACCEPTED);
+            AddPersonResDto addPersonResDto = personService.addPerson(addPersonReqDto);
+            return  new ResponseEntity(addPersonResDto, HttpStatus.ACCEPTED);
         }
         catch (Exception e){
 
             return new ResponseEntity(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
         }
 
-        }
+    }
 }

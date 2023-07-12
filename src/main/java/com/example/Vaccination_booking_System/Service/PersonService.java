@@ -1,6 +1,8 @@
 package com.example.Vaccination_booking_System.Service;
 
 
+import com.example.Vaccination_booking_System.DTO.RequestDto.AddPersonReqDto;
+import com.example.Vaccination_booking_System.DTO.ResponseDto.AddPersonResDto;
 import com.example.Vaccination_booking_System.Model.Person;
 import com.example.Vaccination_booking_System.Repository.PersonRepository;
 import lombok.AllArgsConstructor;
@@ -11,21 +13,36 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
 
-
     @Autowired
     PersonRepository personRepository;
 
 
-    public Person addPerson(Person person)
-    {
+    public AddPersonResDto addPerson(AddPersonReqDto addPersonReqDto) {
 
 
+        // convert req dto to entitiy
+
+        Person person = new Person();
+
+        person.setName(addPersonReqDto.getName());
+        person.setEmailId(addPersonReqDto.getEmailId());
+        person.setGender(addPersonReqDto.getGender());
+        person.setAge(addPersonReqDto.getAge());
         person.setIsDose1Taken(false);
         person.setIsDose2Taken(false);
+        person.setCertificate(null);
 
 
-        Person person1 = personRepository.save(person);
+        Person savedPerson = personRepository.save(person);
 
-        return person1;
+        AddPersonResDto addPersonResDto = new AddPersonResDto();
+        addPersonResDto.setMessage("Congrats! you have been registered");
+        addPersonResDto.setName(savedPerson.getName());
+        return addPersonResDto;
+
     }
+
 }
+
+
+
