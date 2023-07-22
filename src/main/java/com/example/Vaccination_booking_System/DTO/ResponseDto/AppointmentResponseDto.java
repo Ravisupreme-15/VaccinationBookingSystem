@@ -4,18 +4,22 @@ package com.example.Vaccination_booking_System.DTO.ResponseDto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Date;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddPersonResDto {
+public class AppointmentResponseDto {
 
+    String appointmentId;
 
-     String name;
+    Date appointmentDate;
 
-     String message;
+    String personName;
 
+    String doctorName;
 
-
+    CenterResDto centerResDto;
 }

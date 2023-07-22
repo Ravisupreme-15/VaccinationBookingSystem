@@ -1,4 +1,4 @@
-package com.example.Vaccination_booking_System.DTO.ResponseDto;
+package com.example.Vaccination_booking_System.DTO.RequestDto;
 
 
 import lombok.*;
@@ -9,13 +9,10 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddPersonResDto {
+public class AppointmentReqDto {
 
+     int personId;
 
-     String name;
-
-     String message;
-
-
+     int doctorId;
 
 }

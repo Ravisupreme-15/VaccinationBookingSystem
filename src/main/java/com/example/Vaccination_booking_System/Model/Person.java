@@ -44,5 +44,9 @@ public class Person {
 
    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     Certificate certificate;
+
+
+   @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
+    List<Appointment> appointments = new ArrayList<>();
 }
 

@@ -21,6 +21,9 @@ public class Certificate {
     String confirmationMessage;
 
    @OneToOne
-           @JoinColumn
+   @JoinColumn
      Person person;
+
+
+
 }
